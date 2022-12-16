@@ -1,0 +1,27 @@
+<form [formGroup]="nuevaPregunta">
+    <div class="form-group input-group-lg">
+        <input type="text" class="form-control" placeholder="Ingrese Pregunta" formControlName="titulo">
+       
+    </div>
+    <div formArrayName = "respuestas" *ngFor="let item of getRespuestas.controls; let i = index">
+        <div class="input-group" [formGroupName]="i" style="padding-top: 10px;">
+            <input type="text" class="form-control" placeholder="Respuesta {{ i + 1 }}" formControlName="descripcion">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="radio" name="esCorrecta" (change)="setRespuestaValida(i)" [value]="i" formControlName="esCorrecta">
+                </div>
+            </div>
+            <span  (click)="eliminarRespuesta(i)">
+                <i class="bi bi-trash3"></i>
+            </span>
+        </div>
+    </div>
+    <span class="material-icons add-icon" (click)="agregarRespuesta()">
+        <i class="bi bi-plus-square"></i>
+    </span>
+    
+    <br>
+    <br>
+    <button class="btn btn-primary float-right" [disabled]="nuevaPregunta.invalid"
+            (click)="agregarPregunta()">Agregar</button>
+</form>

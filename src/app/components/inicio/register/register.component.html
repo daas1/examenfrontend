@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-6 text-center">
+            <h2>Registrarse</h2>
+            <app-loading *ngIf="loading"></app-loading>
+            <form [formGroup]="register" (ngSubmit)="registrar()">
+                <input type="text" class="form-control" placeholder="Usuario" formControlName="usuario">
+                <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                <div class="form-group">
+                    <button class="btn btn-primary mr-2" type="submit">Aceptar</button>
+                    <button class="btn btn-secondary" routerLink="/inicio/login">Volver</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
